@@ -20,6 +20,8 @@ import News from '../modules/menu/component/News'
 import Website from '../modules/menu/component/Website'
 import Calander from '../modules/menu/component/Calander'
 import EditProfile from '../modules/menu/component/EditProfile'
+import WalletScreen from '../modules/wallet/container'
+import ResultScreen from '../modules/result/container'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import { Constants } from '../common'
 
@@ -188,6 +190,40 @@ const NewsStack = () => {
   )
 }
 
+const WalletStack = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: Color.StatusBar },
+        headerTintColor: Color.Background,
+        headerTitleStyle: { fontWeight: 'bold' }
+      }}>
+      <Stack.Screen
+        name="Wallet"
+        component={WalletScreen}
+        options={{ headerShown: false, title: 'Wallet' }}
+      />
+    </Stack.Navigator>
+  )
+}
+
+const ResultStack = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: Color.StatusBar },
+        headerTintColor: Color.Background,
+        headerTitleStyle: { fontWeight: 'bold' }
+      }}>
+      <Stack.Screen
+        name="Result"
+        component={ResultScreen}
+        options={{ headerShown: false, title: 'Result' }}
+      />
+    </Stack.Navigator>
+  )
+}
+
 const App = () => {
   return (
     <>
@@ -295,6 +331,48 @@ const App = () => {
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons
                 name="newspaper-variant-multiple"
+                color={Color.TextTertiary}
+                size={20}
+              />
+            )
+          }}
+        />
+        <Tab.Screen
+          name="WalletStack"
+          component={WalletStack}
+          options={{
+            headerShown: false,
+            tabBarLabel: 'Wallet',
+            tabBarLabelStyle: {
+              fontSize: Constants.fontMD,
+              marginBottom: 5,
+              justifyContent: 'space-around',
+              fontFamily: Constants.fontFamilyMedium
+            },
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons
+                name="wallet"
+                color={Color.TextTertiary}
+                size={20}
+              />
+            )
+          }}
+        />
+        <Tab.Screen
+          name="ResultStack"
+          component={ResultStack}
+          options={{
+            headerShown: false,
+            tabBarLabel: 'Result',
+            tabBarLabelStyle: {
+              fontSize: Constants.fontMD,
+              marginBottom: 5,
+              justifyContent: 'space-around',
+              fontFamily: Constants.fontFamilyMedium
+            },
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons
+                name="flag-checkered"
                 color={Color.TextTertiary}
                 size={20}
               />
